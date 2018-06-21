@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.timepicker.css" rel="stylesheet" />
+    <link href="~/Content/Master.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/datepicker.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/alertify.min.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/themes/bootstrap.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="#">
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="@Url.Action("Index", "Home")">UniversityMs</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="@Url.Action("Index", "Home")">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="@Url.Action("SaveDepartment", "Department")">Create Department</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "Department")">View Department</a>
+                        <a class="dropdown-item" href="@Url.Action("SaveCourse", "Course")">Save Course</a>
+                        <a class="dropdown-item" href="@Url.Action("SaveTeacher", "Teacher")">Save Teacher</a>
+                        <a class="dropdown-item" href="@Url.Action("AssignCourseToTeacher", "Admin")">Assign Course</a>
+                        <a class="dropdown-item" href="@Url.Action("ViewCourseAssign", "Admin")">View Course Assign</a>
+                        <a class="dropdown-item" href="@Url.Action("AllocateClassroom", "Admin")">Allocate Classroom</a>
+                        <a class="dropdown-item" href="@Url.Action("ViewSchedule", "Admin")">View Schedule</a>
+                        
+                        <a class="dropdown-item" href="@Url.Action("ViewStudentResult", "Student")">View Result</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Teacher</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="@Url.Action("RegisterStudent", "Student")">Register Student</a>
+                        <a class="dropdown-item" href="@Url.Action("EnrollStudent", "Student")">Enroll Course</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Student</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="@Url.Action("SaveStudentResult", "Student")">Save Student Result</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reset</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="@Url.Action("UnassignCourses", "Admin")">Unassign Courses</a>
+                        <a class="dropdown-item" href="@Url.Action("UnallocateClassroom", "Admin")">Unallocate Classroom</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container body-content" style="margin-top: 80px;">
+        @RenderBody()
+        @*<hr />
+        <footer style="position: inherit; bottom: 0; width: 100%; height: 30px; /* Height of the footer */">
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>*@
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/alertify.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.timepicker.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.4/jspdf.plugin.autotable.js"></script>*@
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Master.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿@model System.Collections.Generic.IEnumerable<UniversityMS.Models.Department>
+
+@{
+    ViewBag.Title = "Departments";
+}
+
+<h2>View All Department</h2>
+
+<table class="table table-hover table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">
+                @Html.DisplayName("Department Code")
+            </th>
+            <th scope="col">
+                @Html.DisplayName("Department Name")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

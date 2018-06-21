@@ -1,0 +1,68 @@
+﻿@model UniversityMS.Models.Student
+
+@{
+    ViewBag.Title = "Register Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register Student</h2>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "saveStudentForm", name = "saveStudentForm" }))
+{
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.StudentName, new { @class = "control-label col-md-2", @for = "TeacherName" })
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.StudentName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StudentName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.StudentEmail, new { @class = "control-label col-md-2", @for = "TeacherAddress" })
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.StudentEmail, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StudentEmail)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.StudentContactNo, new { @class = "control-label col-md-2", @for = "TeacherEmail" })
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.StudentContactNo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StudentContactNo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RegisterDate, new { @class = "control-label col-md-2", @for = "TeacherContactNo" })
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.RegisterDate, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RegisterDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StudentAddress, new { @class = "control-label col-md-2", @for = "DesignationId" })
+            <div class="col-md-3">
+                @Html.TextAreaFor(model => model.StudentAddress, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StudentAddress)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.Label("Department", new { @class = "control-label col-md-2", @for = "DepartmentId" })
+            <div class="col-md-3">
+                @Html.DropDownList("DepartmentId", (SelectList)ViewData["departments"], "Select Department", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DepartmentId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="SaveStudentButton" name="SaveStudentButton" value="Save" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+
+} 
+

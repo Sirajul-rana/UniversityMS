@@ -1,0 +1,58 @@
+﻿@model UniversityMS.Models.AllocatedClassroom
+
+@{
+    ViewBag.Title = "ViewSchedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Schedule and Room Allocation Information</h2>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "viewScheduleForm", name = "viewScheduleForm" }))
+{
+    <div class="form-horizontal">
+        <hr />
+        <div>
+            <div style="margin: auto; width: 30%;">
+                <table>
+                    <tr>
+                        <td style="">
+                            @Html.LabelFor(model => model.DepartmentId, new { @class = "control-label col-md-2", @for = "DepartmentId", style = "padding-right: 20px; vertical-align: middle; text-align: center;font-weight: bold" })
+                        </td>
+                        <td>
+                            @Html.DropDownList("department", (SelectList)ViewData["departments"], "Select Department", new { @class = "form-control", @style = "float: right" })
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-10">
+
+            </div>
+        </div>
+        @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="showButton" name="showButton" value="Show" class="btn btn-success" />
+                </div>
+            </div>*@
+    </div>
+}
+
+<table class="table table-bordered table-hover table-striped table-light">
+    <tr class="thead-dark">
+        <th>
+            @Html.DisplayName("Course Code")
+        </th>
+        <th>
+            @Html.DisplayName("Name/Title")
+        </th>
+        <th>
+            @Html.DisplayName("Schedule Info")
+        </th>
+    </tr>
+
+    <tbody id="viewTableBody"></tbody>
+</table>

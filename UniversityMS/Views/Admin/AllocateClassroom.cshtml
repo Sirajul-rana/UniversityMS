@@ -1,0 +1,69 @@
+﻿@model UniversityMS.Models.AllocatedClassroom
+@{
+    ViewBag.Title = "Allocate Classroom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Allocate Classroom</h2>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "allocateClassroomForm", name = "allocateClassroomForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model=>model.Department, new { @class = "control-label col-md-2",@for="DepartmentId"})
+            <div class="col-md-3">
+                @Html.DropDownListFor(model => model.DepartmentId, (SelectList)ViewData["departments"], "Select Department", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model=>model.DepartmentId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model=>model.CourseId, new { @class = "control-label col-md-2"})
+            <div class="col-md-3">
+                @Html.DropDownListFor(model => model.CourseId, new SelectList(Enumerable.Empty<SelectListItem>(), "CourseId", "CourseCode"), "Select Course Code", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CourseId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoomId, new { @class = "control-label col-md-2"})
+            <div class="col-md-3">
+                @Html.DropDownListFor(model => model.RoomId, (SelectList)ViewData["rooms"], "Select a room", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RoomId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model=>model.DayId, new { @class = "control-label col-md-2"})
+            <div class="col-md-3">
+                @Html.DropDownListFor(model => model.DayId, (SelectList)ViewData["days"], "Select a Day", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DayId)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model=>model.FromTime, new { @class = "control-label col-md-2"})
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.FromTime, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FromTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model=>model.ToTime, new { @class = "control-label col-md-2"})
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.ToTime, new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.ToTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="allocateButton" name="allocateButton" value="Allocate" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+

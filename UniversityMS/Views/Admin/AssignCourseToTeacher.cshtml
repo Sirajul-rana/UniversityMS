@@ -1,0 +1,78 @@
+﻿@model UniversityMS.Models.AssignCourse
+
+@{
+    ViewBag.Title = "Assign Course To Teacher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Course Assign To Teacher</h2>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "courseAssignForm", name = "courseAssignForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartmentId, new { @class = "control-label col-md-2", @for = "DepartmentId" })
+            <div class="col-md-3">
+                @Html.DropDownListFor(model => model.DepartmentId, (SelectList)ViewData["departments"], "Select Department", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DepartmentId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TeacherId, new { @class = "control-label col-md-2", @for = "TeacherId" })
+            <div class="col-md-3">
+                @Html.DropDownListFor(model => model.TeacherId, new SelectList(Enumerable.Empty<SelectListItem>(), "TeacherId", "TeacherName"), "Select Teacher", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TeacherId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Credit to be taken", new { @class = "control-label col-md-2", @for = "creditTobeTakenTextBox" })
+            <div class="col-md-3">
+                <input type="text" id="creditTobeTakenTextBox" name="creditTobeTakenTextBox" readonly="readonly" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Remaining credit", new { @class = "control-label col-md-2", @for = "remainingCreditTextBox" })
+            <div class="col-md-3">
+                <input type="text" id="remainingCreditTextBox" name="remainingCreditTextBox" class="form-control" readonly="readonly" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CourseId, new { @class = "control-label col-md-2", @for = "CourseId" })
+            <div class="col-md-3">
+                @Html.DropDownListFor(model => model.CourseId, new SelectList(Enumerable.Empty<SelectListItem>(), "CourseId", "CourseCode"), "Select Course Code", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CourseId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Name", new { @class = "control-label col-md-2", @for = "courseNameTextBox" })
+            <div class="col-md-3">
+                <input type="text" id="courseNameTextBox" name="courseNameTextBox" readonly="readonly" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Credit", new { @class = "control-label col-md-2", @for = "courseCreditTextBox" })
+            <div class="col-md-3">
+                @Html.TextBoxFor(model => model.TakenCourseCredit, new { @class = "form-control", @readonly = "readonly" })
+                @*<input type="text" id="courseCreditTextBox" name="courseCreditTextBox" class="form-control" readonly="readonly"/>*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="assignCourseButton" name="assignCourseButton" value="Assign" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+
+

@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="text-align: center"><h1>Welcome To</h1></div>
+<div style="text-align: center">
+    <h2>University Course and Result Management System</h2>
+</div>
+<hr style="border-top: 1px solid #20c997; "/>
+<div style="position: relative; top: 20%; left: 15%">
+    <div class="row">
+
+        <div class="col-lg-2 col-sm-6">
+            <div class="circle-tile ">
+                <a href="#">
+                    <div class="circle-tile-heading dark-gray">
+                        <i class="fa fa-building-o fa-fw fa-3x"></i>
+                    </div>
+                </a>
+                <div class="circle-tile-content dark-gray">
+                    <div class="circle-tile-description text-faded"> Departments</div>
+                    <div class="circle-tile-number text-faded ">@ViewBag.Departments</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-sm-6">
+        <div class="circle-tile ">
+            <a href="#">
+                <div class="circle-tile-heading dark-blue">
+                    <i class="fa fa-users fa-fw fa-3x"></i>
+                </div>
+            </a>
+            <div class="circle-tile-content dark-blue">
+                <div class="circle-tile-description text-faded"> Students</div>
+                <div class="circle-tile-number text-faded ">@ViewBag.Students</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-sm-6">
+        <div class="circle-tile ">
+            <a href="#">
+                <div class="circle-tile-heading red">
+                    <i class="fa fa-users fa-fw fa-3x"></i>
+                </div>
+            </a>
+            <div class="circle-tile-content red">
+                <div class="circle-tile-description text-faded"> Teachers </div>
+                <div class="circle-tile-number text-faded ">@ViewBag.Teachers</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-sm-6">
+        <div class="circle-tile ">
+            <a href="#">
+                <div class="circle-tile-heading green">
+                    <i class="fa fa-book fa-fw fa-3x"></i>
+                </div>
+            </a>
+            <div class="circle-tile-content green">
+                <div class="circle-tile-description text-faded"> Courses </div>
+                <div class="circle-tile-number text-faded ">@ViewBag.Courses</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

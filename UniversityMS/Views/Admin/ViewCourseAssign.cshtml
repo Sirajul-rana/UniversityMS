@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "View Course Assign";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Course Assign</h2>
+<hr />
+@using (Html.BeginForm("ViewCourseAssign", "Admin", FormMethod.Post, new { id = "showCourseAssignForm", name = "showCourseAssignForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div>
+            <div style="margin: auto; width: 30%;">
+                <table>
+                    <tr>
+                        <td style="padding-right: 20px; vertical-align: middle; text-align: center;font-weight: bold">
+                            Department
+                        </td>
+                        <td>
+                            @Html.DropDownList("departmentDropdown", (SelectList)ViewData["departments"], "Select Department", new { @class = "form-control", @style = "float: right" })
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-10">
+
+            </div>
+        </div>
+        @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="showButton" name="showButton" value="Show" class="btn btn-success" />
+                </div>
+            </div>*@
+    </div>
+}
+
+<table class="table table-bordered table-hover table-striped table-light">
+    <tr class="thead-dark">
+        <th>
+            @Html.DisplayName("Code")
+        </th>
+        <th>
+            @Html.DisplayName("Name/Title")
+        </th>
+        <th>
+            @Html.DisplayName("Semester")
+        </th>
+        <th>
+            @Html.DisplayName("Assigned To")
+        </th>
+    </tr>
+
+    <tbody id="tableBody">
+    
+    </tbody>
+</table>
+
