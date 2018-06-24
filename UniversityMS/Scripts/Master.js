@@ -1212,11 +1212,26 @@
         }
     });
     //Ujjwal's Code ends here
+    $("#admin").hover(function() {
+        $("#adminDropdown").toggle();
+    });
 
 
+    $("#teacher").hover(function () {
+        $("#teacherDropdown").toggle();
+    });
+
+    $("#student").hover(function () {
+        $("#studentDropdown").toggle();
+    });
 
 
+    $("#reset").hover(function () {
+        $("#resetDropdown").toggle();
+    });
 
+    //$(".dropdown").hover(function () {
+    //});
 
 
 });

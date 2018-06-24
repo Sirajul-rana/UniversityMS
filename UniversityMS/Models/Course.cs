@@ -22,7 +22,7 @@ namespace UniversityMS.Models
 
         [Required(ErrorMessage = "Please enter course code")]
         [Display(Name = "Course code")]
-        [StringLength(5,ErrorMessage = "Code must be 5 characters long")]
+        [StringLength(100,MinimumLength = 5,ErrorMessage = "Code must be at least 5 characters long")]
         [Remote("IsCourseCodeTaken", "Course", ErrorMessage = "Course code already taken")]
         public string CourseCode { get; set; }
 

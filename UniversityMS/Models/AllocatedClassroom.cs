@@ -11,6 +11,7 @@ namespace UniversityMS.Models
     [Table("AllocatedClassroom")]
     public class AllocatedClassroom
     {
+       
         [Key]
         public int AllocatedClassroomId { get; set; }
 
@@ -45,6 +46,5 @@ namespace UniversityMS.Models
         public Day Day { get; set; }
         public Department Department { get; set; }
         public List<object> Objects { get; set; }
-
     }
 }

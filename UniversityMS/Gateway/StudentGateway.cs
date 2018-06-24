@@ -174,7 +174,7 @@ namespace UniversityMS.Gateway
             List<Course> courses = new List<Course>();
             string query = "select C.CourseId,C.CourseCode from EnrollStudent Es " +
                            "Inner join Course C on C.CourseId = Es.CourseId " +
-                           "where Es.StudentId = @studentId";
+                           "where Es.StudentRegEId = @studentId";
             Gateway gateway = new Gateway(query);
             gateway.SqlCommand.Parameters.Clear();
             gateway.SqlCommand.Parameters.AddWithValue("@studentId", studentId);

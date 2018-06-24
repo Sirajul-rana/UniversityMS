@@ -23,12 +23,12 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Index", "Home")">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
-                    <div class="dropdown-menu">
+                <li class="nav-item dropdown" id="admin">
+                    <a class="nav-link dropdown-toggle"  href="@Url.Action("Index", "Home")" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                    <div class="dropdown-menu" id="adminDropdown">
                         <a class="dropdown-item" href="@Url.Action("SaveDepartment", "Department")">Create Department</a>
                         <a class="dropdown-item" href="@Url.Action("Index", "Department")">View Department</a>
                         <a class="dropdown-item" href="@Url.Action("SaveCourse", "Course")">Save Course</a>
@@ -41,22 +41,22 @@
                         <a class="dropdown-item" href="@Url.Action("ViewStudentResult", "Student")">View Result</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" id="teacher">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Teacher</a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" id="teacherDropdown">
                         <a class="dropdown-item" href="@Url.Action("RegisterStudent", "Student")">Register Student</a>
                         <a class="dropdown-item" href="@Url.Action("EnrollStudent", "Student")">Enroll Course</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" id="student">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Student</a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" id="studentDropdown">
                         <a class="dropdown-item" href="@Url.Action("SaveStudentResult", "Student")">Save Student Result</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" id="reset">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reset</a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" id="resetDropdown">
                         <a class="dropdown-item" href="@Url.Action("UnassignCourses", "Admin")">Unassign Courses</a>
                         <a class="dropdown-item" href="@Url.Action("UnallocateClassroom", "Admin")">Unallocate Classroom</a>
                     </div>
