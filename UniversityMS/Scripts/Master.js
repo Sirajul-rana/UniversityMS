@@ -1230,6 +1230,30 @@
         $("#resetDropdown").toggle();
     });
 
+    $("#createPdf").click(function() {
+        var urlSaveResult = "/Student/ViewStudentResult";
+        var studentId = $("#StudentId").val();
+        $.ajax({
+            url: urlSaveResult,
+            data: {
+                StudentId: studentId
+            },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.message("Download will start soon...");
+                $("#tableBody").empty();
+                $("#StudentId").prop('selectedIndex', 0);
+                $("#StudentName").val("");
+                $("#StudentEmail").val("");
+                $("#departmentId").val("");
+            },
+            error: function (reponse) {
+                alert("error-Teacher-one: " + reponse.status);
+            }
+        });
+    });
     //$(".dropdown").hover(function () {
     //});
 

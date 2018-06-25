@@ -29,7 +29,8 @@ namespace UniversityMS.Manager
 
         public List<Course> GetCourses(int studentId)
         {
-            return studentGateway.GetCourses(studentId);
+            List<Course> courses = studentGateway.GetCourses(studentId);
+            return courses;
         }
         //Sirajuls code ends here
 

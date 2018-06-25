@@ -59,10 +59,10 @@ namespace UniversityMS.Gateway
         public List<Course> GetCourses(int studentId)
         {
 
-            string query = "select C.CourseCode,C.CourseName,G.GradeCode from StudentResult Sr " +
-                           "Inner Join Course C On C.CourseId = Sr.CourseId " +
-                           "Inner Join Grade G On G.GradeId = Sr.GradeId " +
-                           "where Sr.StudentRegId = @studentId";
+            string query = "select C.CourseId,C.CourseCode,C.CourseName from EnrollStudent Er " +
+                           "Inner Join Course C On C.CourseId = Er.CourseId " +
+                           "where Er.StudentRegEId = @studentId and Er.Available = 1 " +
+                           "Group By C.CourseId,C.CourseCode,C.CourseName";
             Gateway gateway = new Gateway(query);
             gateway.SqlCommand.Parameters.Clear();
             gateway.SqlCommand.Parameters.AddWithValue("@studentId", studentId);
@@ -71,17 +71,10 @@ namespace UniversityMS.Gateway
             while (reader.Read())
             {
                 Course course = new Course();
+                course.CourseId = (int)reader["CourseId"];
                 course.CourseCode = reader["CourseCode"].ToString();
                 course.CourseName = reader["CourseName"].ToString();
-                Grade grade = new Grade();
-                if (reader["GradeCode"].ToString() == "No Grade")
-                {
-                    grade.GradeCode = "Not Graded Yet";
-                }
-                else
-                {
-                    grade.GradeCode = reader["GradeCode"].ToString();
-                }
+                Grade grade = GetGrade(studentId,course.CourseId);
                 
                 course.Grade = grade;
 
@@ -89,6 +82,37 @@ namespace UniversityMS.Gateway
             }
             gateway.Connection.Close();
             return courses;
+        }
+
+        private Grade GetGrade(int studentId, int courseId)
+        {
+            Grade aGrade = new Grade();
+            string query = "select G.GradeCode from StudentResult Sr " +
+                           "Left join Grade G on G.GradeId = Sr.GradeId " +
+                           "where Sr.StudentRegId = @studentId and Sr.CourseId = @courseId";
+            Gateway gateway = new Gateway(query);
+            gateway.SqlCommand.Parameters.Clear();
+            gateway.SqlCommand.Parameters.AddWithValue("@studentId", studentId);
+            gateway.SqlCommand.Parameters.AddWithValue("@courseId", courseId);
+            SqlDataReader reader = gateway.SqlCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                if (reader["GradeCode"] == DBNull.Value)
+                {
+                    aGrade.GradeCode = "Not Graded Yet";
+                }
+                else
+                {
+                    aGrade.GradeCode = reader["GradeCode"].ToString();
+                }
+            }
+            else
+            {
+                aGrade.GradeCode = "Not Graded Yet";
+            }
+
+            return aGrade;
         }
 
         public string GetDepartmentByStudentId(int departmentId)
